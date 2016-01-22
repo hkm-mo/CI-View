@@ -65,7 +65,7 @@ $config['base_path_symbol'] = '~/';
 | Magic Replace
 |--------------------------------------------------------------------------
 | 
-| Find key and replace all as it's value
+| Find key and replace all as its value
 | 
 */
 $config['magic_replace'] = array();
