@@ -1,0 +1,9 @@
+system/
+index.php
+application/cache/
+application/.htaccess
+application/index.html
+application/*/index.html
+application/*/*/index.html
+application/views/errors/
+application/config/
