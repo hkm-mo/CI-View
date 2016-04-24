@@ -1,5 +1,5 @@
 system/
-index.php
+/index.php
 application/cache/
 application/.htaccess
 application/index.html
