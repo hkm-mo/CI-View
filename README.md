@@ -56,7 +56,41 @@ _layout1.php
 
 ## Config
 
-This library config should be placed in `/application/config/view.php`
+This library config should be placed in `/application/config/view.php`.
+
+####$config['magic_replace'] = array();
+
+An associative array, replace all occurred keys with values in view output.
+
+####$config['js_debug'] = TRUE;
+
+A config to control if it be switched to minified JS version.
+
+####$config['css_debug'] = TRUE;
+
+A config to control if it be switched to minified CSS version.
+
+####$config['minify_js_ext'] = '.min.js';
+
+A suffix of minified JS file.
+
+####$config['minify_css_ext'] = '.min.css';
+
+A suffix of minified CSS file.
+
+####$config['output_collapse'] = FALSE;
+
+To enable feature, remove all `\n` and `\t` in view output.
+
+####$config['title_separator'] = ' - ';
+
+Join all title semgments wiht title separator.
+
+####$config['base_path_symbol'] = '~/';
+
+Replace all occurred symbols in view output with CodeIgniter base url.
+
+Set it to NULL to disable this feature.
 
 ## License
 
