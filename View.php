@@ -38,7 +38,11 @@ class View {
 	public function render($view = NULL, $vars = array())
 	{
 		if ($view === NULL) {
-			$view = strtolower( $this->router->class ) .'/'. $this->router->method;
+			$router = $this->router;
+			$view = strtolower($router->class) .'/'. $router->method;
+			if ( $router->directory !== NULL ) {
+				$view = strtolower($router->directory) . $view;
+			}
 		}
 		
 		$content = $this->load($view, $vars, TRUE);
