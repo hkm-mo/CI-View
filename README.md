@@ -1,25 +1,52 @@
 # CI View
 
-CI View is an advanced view library for [Codeigniter](http://codeigniter.com/). It was influenced by ASP.NET MVC. It backfill the empty of view support in Codeigniter.
+CI View is an advanced view library for [Codeigniter](http://codeigniter.com/). 
+It was influenced by ASP.NET MVC. It enhance view for Codeigniter.
 
-It support nested layout/template, menus, JS/CSS files mamagment.
+It support nested layout, menus, JS/CSS files mamagment, globle string replacing.
+A full example refer [CI View Example](https://github.com/hkm-mo/CI-View-Example)
 
 ## Installation
 
 1. Download and install Codeigniter
 2. Download and extract CI View 
-3. Copy `/application/libraries/View` folder to your application libraries folder
-4. Copy `/application/config/view.php` to your application config folder
+3. Copy View folder into your application libraries folder
+4. Copy `/View/view-config_example.php` to your application config folder and 
+rename it as `view.php`
 5. Done!
 
 ## Getting Started
 
-I suggest you create a folder `_shared` in your application view folder for sharing resources, e.g.: layout. By default, CI View will try to get a view file at `[controller-class]/[controller-method].php` in your view folder.
+By default, CI View follow an automatically generate path 
+`[sub-folder]/[controller class name]/[controller method name].php` to get first 
+view file in application's views folder. And all views' files and folders should 
+be lower case.
 
-![Suggested view folder structure](/images/view-folder.png)
+An example of folder structure
+```
+application
+├─ controllers
+│  │  Controller1.php
+│  └─ sub_folder
+│        In_folder_controller.php
+├─ views
+│  ├─ _shared
+│  │     _layout1.php
+│  │     ...
+│  ├─ controller1
+│  │     index.php
+│  │     ...
+│  └─ sub_folder
+│     └─ in_folder_controller
+│           index.php
+│           ...
+```
 
+I suggest you create a folder named `_shared` in your application view folder for 
+sharing resources, such as layout, shared components. And all shared layouts 
+and components should be named start with "_".
 
-Controller1.php
+application/controllers/Controller1.php
 ```php
 <?php
 class Controller1 extends CI_Controller {
@@ -31,7 +58,7 @@ class Controller1 extends CI_Controller {
 }
 ```
 
-index.php
+application/views/controller1/index.php
 ```php
 <?php
 $this->set_layout('_shared/_layout1');
@@ -39,7 +66,7 @@ $this->set_layout('_shared/_layout1');
 <h1>Index view</h1>
 ```
 
-_layout1.php
+application/views/_shared/_layout1.php
 ```php
 <!DOCTYPE html>
 <html>
