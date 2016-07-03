@@ -245,33 +245,34 @@ class View {
 	
 	public function load($view_name, $var = array(), $is_return = FALSE)
 	{
-		$view_path = VIEWPATH . $view_name . '.php';
+		$view_path = NULL;
 		
-		if ( file_exists( $view_path )) {
-			
-			if($is_return) {
-				ob_start();
-			}
-			
-			if (is_array($var))
-			{
-				extract($var);
-			}
-			
-			include $view_path;
-			
-			if ($is_return) {
-				$buffer = ob_get_contents();
-				@ob_end_clean();
-				return $buffer;
-			} else {
-				return TRUE;
-			}
-			
+		if ( file_exists( VIEWPATH . $view_name . '.php' ) ) {
+			$view_path = VIEWPATH . $view_name . '.php';
+		} else if ( !file_exists( VIEWPATH . $view_name ) ) {
+			$view_path = VIEWPATH . $view_name;
 		} else {
 			show_error('Unable to load the requested file: ' . $view_name);
 		}
+			
+		if($is_return) {
+			ob_start();
+		}
 		
+		if (is_array($var))
+		{
+			extract($var);
+		}
+		
+		include $view_path;
+		
+		if ($is_return) {
+			$buffer = ob_get_contents();
+			@ob_end_clean();
+			return $buffer;
+		} else {
+			return TRUE;
+		}
 	}
 	
 	public function set_var($name, $value)
